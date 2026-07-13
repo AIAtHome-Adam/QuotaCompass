@@ -46,15 +46,22 @@ Concise handoff context for an agent entering this folder without conversation h
 - Native skill validation on 2026-07-12: Hermes 0.18 discovered the generated package as a local, trusted, enabled skill in an isolated WSL home. After adding its declared terminal requirement and `${HERMES_SKILL_DIR}` invocation, a real non-delivering Hermes one-shot correctly reported the recommendation, percentages/resets, temporary Codex capacity, expired Cursor auth, and both pre-reset nudges. OpenClaw 2026.6.8 likewise reported the skill eligible, model-visible, user-invocable, command-visible, and free of missing requirements; a real turn and exact /quotacompass command returned correct full reports. Marker-owned test copies were moved out of active skill roots and disposable services were stopped.
 - Final sdist/wheel artifacts were rebuilt after the Hermes/menu work and the requirement-audit remediation; a release audit also caught a OneDrive-generated `assets (# Name clash ...)` path. Both build targets now exclude every preserved name-clash path, and a regression proves each index asset reference resolves. The exact wheel promoted to `dist` passed an isolated Python 3.12 install, CLI/setup dry-run, and packaged dashboard/API/CSP/static HTTP checks. It contains 64 files, three correctly addressed local static assets, all 12 reauth scripts, byte-identical packaged Hermes/OpenClaw skill sources, Windows tzdata metadata, no prohibited analytics/font/CDN endpoints, and no obvious embedded API-key pattern. The public sdist excludes the private initial design chat and every conflict copy. Strict Twine 6.2 checks pass. Final promoted hashes belong in the external release handoff rather than this packaged file so the sdist does not document a self-invalidating hash.
 
+## Publication snapshot (2026-07-13)
+
+- Public repository: `https://github.com/AIAtHome-Adam/QuotaCompass`; default branch `main`, issues and private vulnerability reporting enabled.
+- `v0.1.0` is published as a GitHub prerelease/public alpha from commit `f5c9260`. Its exact CI run passed the package job and Python 3.11/3.13 matrices on Ubuntu, Windows, and macOS.
+- CI found and fixed two real portability defects before release: the reauth helper test now expects `.ps1` on Windows and `.sh` elsewhere, and the cooldown now applies only after a prior launch rather than treating low system uptime as a recent launch.
+- The green-CI wheel and sdist passed strict Twine checks, public-download digest verification, a clean Python 3.12 install, and packaged dashboard/API smoke tests (HTTP 200, health `ok`, ten demo providers).
+- Windows sandbox caution: run Git metadata/index operations in the same elevated execution context. A split-root sandbox inconsistency once presented every tracked file as both staged-deleted and untracked; commit `8356697` immediately restored the intact tree. Verify `git status`, staged stats, and remote contents before future pushes.
+- GitHub Actions currently emits Node 20 deprecation notices for upstream action majors while GitHub forces them onto Node 24. The workflow is green, but updating action majors is a maintenance follow-up.
 ## Human/external review queue
 
 1. Refresh Claude auth and compare live 5-hour, weekly, model-scoped, and extra-usage windows against the provider UI.
 2. Finish pixel-based contrast checks in both themes and a complete manual keyboard traversal. Real-browser layout QA at 375/768/1024/1440, theme switching, touch-target sizing, representative keyboard flows, history/timeline parity, and console health now pass.
-3. Publish to Hermes Skills Hub and ClawHub after authenticating the final registry/repository owner, then verify stranger installs. Real Hermes and OpenClaw conversations plus the exact /quotacompass command now pass against synthetic exact-wheel data.
-4. Create/publish the planned `AIAtHome-Adam/QuotaCompass` repository on a `main` branch so the in-app getting-started and help links resolve; the supplied social/profile destinations are already exact.
-5. Recheck package/repository/name availability immediately before public release and confirm MIT licensing.
-6. Review and explicitly run the chosen service installer; setup intentionally does not create a background service silently.
-7. Resolve or archive the pre-existing and generated `# Name clash ...` conflict paths separately. They were preserved as user/workspace files and excluded from both release artifacts.
+3. After public-alpha smoke feedback, configure PyPI trusted publishing and verify a stranger install from PyPI; do not store a long-lived PyPI token locally.
+4. Publish to Hermes Skills Hub and ClawHub, then verify stranger installs. Real Hermes and OpenClaw conversations plus the exact `/quotacompass` command already pass against synthetic exact-wheel data.
+5. Review and explicitly run the chosen service installer; setup intentionally does not create a background service silently.
+6. Resolve or archive the pre-existing and generated `# Name clash ...` conflict paths separately. They were preserved as user/workspace files and excluded from both release artifacts.
 
 ## Useful commands
 

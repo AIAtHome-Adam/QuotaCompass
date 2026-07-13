@@ -30,6 +30,7 @@ def test_reauth_manager_launches_fixed_helper_and_audits(
         return SimpleNamespace(pid=4321)
 
     monkeypatch.setattr("quotacompass.core.reauth.subprocess.Popen", fake_popen)
+    monkeypatch.setattr("quotacompass.core.reauth.time.monotonic", lambda: 5.0)
     manager = ReauthManager(claude_config(), tmp_path, cooldown_seconds=60)
 
     result = manager.start("claude", origin="test")

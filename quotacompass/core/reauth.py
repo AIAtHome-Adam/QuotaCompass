@@ -62,8 +62,8 @@ class ReauthManager:
 
     def start(self, provider_id: str, *, origin: str) -> dict[str, str | int]:
         now = time.monotonic()
-        last = self._last_start.get(provider_id, 0)
-        if now - last < self.cooldown_seconds:
+        last = self._last_start.get(provider_id)
+        if last is not None and now - last < self.cooldown_seconds:
             remaining = max(1, round(self.cooldown_seconds - (now - last)))
             raise RuntimeError(f"Reauthentication cooldown active for {remaining}s")
         script = self._script(provider_id)

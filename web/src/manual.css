@@ -1,0 +1,87 @@
+.manual-entry {
+  display: grid;
+  gap: 7px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.manual-entry label {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.manual-entry > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.manual-entry input,
+.manual-entry button {
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.manual-entry input {
+  min-width: 0;
+  padding: 8px 11px;
+  color: var(--text);
+  background: var(--surface-raised);
+  font-variant-numeric: tabular-nums;
+}
+
+.manual-entry button {
+  padding: 8px 15px;
+  color: var(--bg);
+  background: var(--brand);
+  font-weight: 750;
+}
+
+.manual-entry button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.manual-entry small {
+  color: var(--text-muted);
+}
+
+.form-message {
+  color: var(--brand-strong);
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.manual-schedule {
+  display: grid;
+  grid-template-columns: minmax(110px, auto) minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.manual-schedule summary {
+  grid-column: 1 / -1;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.manual-schedule > span {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 540px) {
+  .manual-schedule {
+    grid-template-columns: 1fr;
+  }
+}

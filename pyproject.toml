@@ -1,0 +1,89 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "quotacompass"
+version = "0.1.0"
+description = "Local-first AI quota tracking and provider guidance"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Adam Ellch" }]
+keywords = ["ai", "quota", "monitoring", "claude", "codex", "cursor", "local-first"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: System :: Monitoring",
+]
+dependencies = [
+  "fastapi>=0.115,<1",
+  "httpx>=0.27,<1",
+  "platformdirs>=4.3,<5",
+  "psutil>=6.1,<8",
+  "pydantic>=2.9,<3",
+  "PyYAML>=6.0,<7",
+  "tzdata>=2025.2; platform_system == 'Windows'",
+  "uvicorn>=0.30,<1",
+]
+
+[project.urls]
+Homepage = "https://github.com/AIAtHome-Adam/QuotaCompass"
+Repository = "https://github.com/AIAtHome-Adam/QuotaCompass"
+Documentation = "https://github.com/AIAtHome-Adam/QuotaCompass#readme"
+Issues = "https://github.com/AIAtHome-Adam/QuotaCompass/issues"
+Changelog = "https://github.com/AIAtHome-Adam/QuotaCompass/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "pytest-asyncio>=0.24,<1",
+  "ruff>=0.9,<1",
+]
+
+[project.scripts]
+quotacompass = "quotacompass.cli:main"
+qc = "quotacompass.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["quotacompass"]
+exclude = ["/**/*# Name clash*"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"scripts/reauth" = "quotacompass/reauth_scripts"
+"scripts/install-service.ps1" = "quotacompass/service_scripts/install-service.ps1"
+"scripts/install-service.sh" = "quotacompass/service_scripts/install-service.sh"
+"skills/hermes/quotacompass" = "quotacompass/agent_skills/hermes/quotacompass"
+"skills/openclaw/quotacompass" = "quotacompass/agent_skills/openclaw/quotacompass"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/**/*# Name clash*",
+  "/Initial Design Chat.txt",
+  "/PLAN (# Name clash 2026-07-10 qx2ld7C #).md",
+  "/PLAN (# Name clash 2026-07-10 u0vw0cC #).md",
+  "/tests/test_additional_adapters (# Name clash 2026-07-10 rpo9lpC #).py",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --ignore-glob=*#*"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501", "B027"]

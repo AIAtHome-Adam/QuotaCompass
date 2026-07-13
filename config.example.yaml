@@ -1,0 +1,21 @@
+timezone: UTC
+server:
+  host: 127.0.0.1
+  port: 4747
+  auth_token: null
+security:
+  reauth_trigger: local
+  reauth_token: null        # distinct token required only for remote reauth
+poll:
+  default_interval_minutes: 15
+  concurrency: 4
+state:
+  dir: null
+  history_retention_days: 90
+reserved_ports: []
+providers: {}
+advisor:
+  nudge_threshold:
+    unused_pct: 25
+    within_hours: 24
+  task_weights: {}

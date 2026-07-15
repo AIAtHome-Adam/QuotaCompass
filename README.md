@@ -2,13 +2,13 @@
 
 QuotaCompass is a self-hosted AI quota dashboard and advisor. It combines subscription and API usage windows, reset times, authentication health, and freshness into local JSON/Markdown state, a CLI, a REST API, and a bundled web dashboard.
 
-Release status: **v0.1.0 public alpha**. The core state schema is versioned and tested, but provider-owned quota surfaces may evolve between releases.
+Release status: **v0.1.1 public alpha**. The core state schema is versioned and tested, but provider-owned quota surfaces may evolve between releases.
 
 It has no telemetry, cloud account, leaderboard, Google Fonts, CDN, or third-party runtime asset. Provider polling requires internet access and is constrained to each enabled adapter's explicit HTTPS host allowlist; normalized state and history stay on your machine.
 
 ## Install and start
 
-Python 3.11 or newer is required. Install the published package with:
+Python 3.11 or newer is required. After the v0.1.1 PyPI publication, install with:
 
 ```text
 python -m pip install quotacompass
@@ -17,7 +17,7 @@ quotacompass poll
 quotacompass serve
 ```
 
-To test a source checkout or GitHub prerelease before PyPI publication:
+To install from source or test a GitHub release before PyPI publication:
 
 ```text
 git clone https://github.com/AIAtHome-Adam/QuotaCompass.git
@@ -84,4 +84,4 @@ Run `quotacompass doctor` first when troubleshooting. It checks local prerequisi
 
 The dashboard resource menu links to getting started, the local API reference, [troubleshooting](docs/TROUBLESHOOTING.md), [customization](docs/CUSTOMIZATION.md), provider support, and the AI at Home community channels. External links are opened only after an explicit click; no social or documentation service is contacted during dashboard startup.
 
-QuotaCompass is MIT licensed. See `CHANGELOG.md`, `PLAN.md`, `docs/SECURITY.md`, `docs/COMPLETION_AUDIT.md`, and `IMPLEMENTATION_NOTES.md` for release, design, risk, and handoff context.
+QuotaCompass is MIT licensed. See `CHANGELOG.md`, `PLAN.md`, `docs/SECURITY.md`, `docs/PUBLISHING.md`, `docs/COMPLETION_AUDIT.md`, and `IMPLEMENTATION_NOTES.md` for release, design, risk, publication, and handoff context.

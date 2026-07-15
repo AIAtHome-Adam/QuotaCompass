@@ -2,6 +2,14 @@
 
 All notable changes to QuotaCompass are recorded here. The project follows semantic versioning after its initial public alpha.
 
+## [0.1.1] - 2026-07-14
+
+### Changed
+
+- Declared the existing MIT license with current SPDX/PEP 639 package metadata and explicitly bundled `LICENSE`.
+- Added token-free PyPI and TestPyPI Trusted Publishing with isolated environments, single-build artifact promotion, strict distribution checks, and release-tag/version validation.
+- Updated GitHub Actions to Node 24-compatible action majors and documented a repeatable publishing and clean-install verification procedure.
+
 ## [0.1.0] - 2026-07-12
 
 ### Added
@@ -25,3 +33,4 @@ All notable changes to QuotaCompass are recorded here. The project follows seman
 - This is the first public alpha; feedback-driven compatibility fixes will ship as 0.1.x releases.
 
 [0.1.0]: https://github.com/AIAtHome-Adam/QuotaCompass/releases/tag/v0.1.0
+[0.1.1]: https://github.com/AIAtHome-Adam/QuotaCompass/compare/v0.1.0...v0.1.1
